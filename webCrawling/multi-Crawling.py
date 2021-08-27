@@ -78,9 +78,6 @@ def getThemeTime(theme, cafe):
         for theme in impossibleThemes:
             print(theme.text.strip())
 
-def getCafeTheme(cafe):
-    return cafeThemes[cafe]
-
 def do_thread_crawl(cafe, themes: list):
     thread_list = []
     with ThreadPoolExecutor(max_workers=8) as executor:
@@ -90,7 +87,7 @@ def do_thread_crawl(cafe, themes: list):
             execution.result()
 
 def do_process_with_thread_crawl(cafe: str):
-    do_thread_crawl(cafe, getCafeTheme(cafe))
+    do_thread_crawl(cafe, cafeThemes[cafe])
 
 if __name__ == "__main__":
     start_time = time.time()
